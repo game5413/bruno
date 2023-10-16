@@ -17,7 +17,12 @@ import RemoveCollection from './RemoveCollection';
 import ExportCollection from './ExportCollection';
 import CollectionProperties from './CollectionProperties';
 import { doesCollectionHaveItemsMatchingSearchText } from 'utils/collections/search';
-import { isItemAFolder, isItemARequest, transformCollectionToSaveToExportAsFile } from 'utils/collections';
+import {
+  isItemAFolder,
+  isItemARequest,
+  transformCollectionToSaveToExportAsFile,
+  saveCollectionAsOpenApi
+} from 'utils/collections';
 import exportCollection from 'utils/collections/export';
 
 import RenameCollection from './RenameCollection';
@@ -86,6 +91,11 @@ const Collection = ({ collection, searchText }) => {
   const handleExportClick = () => {
     const collectionCopy = cloneDeep(collection);
     exportCollection(transformCollectionToSaveToExportAsFile(collectionCopy));
+  };
+
+  const handlePublishClick = () => {
+    const collectionCopy = cloneDeep(collection);
+    saveCollectionAsOpenApi(collectionCopy);
   };
 
   const [{ isOver }, drop] = useDrop({
@@ -195,6 +205,15 @@ const Collection = ({ collection, searchText }) => {
               }}
             >
               Export
+            </div>
+            <div
+              className="dropdown-item"
+              onClick={(e) => {
+                menuDropdownTippyRef.current.hide();
+                handlePublishClick(true);
+              }}
+            >
+              Publish
             </div>
             <div
               className="dropdown-item"

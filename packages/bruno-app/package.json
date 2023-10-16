@@ -55,9 +55,11 @@
     "react-redux": "^7.2.6",
     "react-tooltip": "^5.5.2",
     "sass": "^1.46.0",
+    "semver": "^7.5.4",
     "styled-components": "^5.3.3",
     "tailwindcss": "^2.2.19",
     "xml-formatter": "^3.5.0",
+    "yaml": "^2.3.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
